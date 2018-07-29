@@ -90,8 +90,6 @@ class BookListTableViewController: UITableViewController, BookControllerProtocol
                 let indexPath = tableView.indexPathForSelectedRow else {return}
             bigImageVC.bookController = bookController
             bigImageVC.book = bookController?.books[indexPath.row]
-            
-            
         }
     }
     

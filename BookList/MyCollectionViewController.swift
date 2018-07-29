@@ -18,18 +18,25 @@ class MyCollectionViewController: UICollectionViewController, BookControllerProt
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        title = "My Bookcover Collection"
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "ToBigPicture"
+        {
+            guard let bigImageVC = segue.destination as? LargeImageViewController,
+                let cell = sender as! BookImageCollectionViewCell?,
+                let indexPath = collectionView?.indexPath(for: cell) else {return}
+            
+            bigImageVC.bookController = bookController
+            bigImageVC.book = bookController?.books[indexPath.row]
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -41,14 +48,16 @@ class MyCollectionViewController: UICollectionViewController, BookControllerProt
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 1
+        return bookController?.books.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! BookImageCollectionViewCell
     
-        
+        let book = bookController?.books[indexPath.row]
+        cell.bookCoverImageView?.image = UIImage(named: (book?.bookCover)!)
+        cell.titleLabel?.text = book?.title
         
     
         return cell
