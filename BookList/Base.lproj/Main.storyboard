@@ -38,15 +38,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookListCell" textLabel="EZo-TW-fOL" style="IBUITableViewCellStyleDefault" id="UNw-3g-sCj">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BookListCell" textLabel="EZo-TW-fOL" style="IBUITableViewCellStyleDefault" id="UNw-3g-sCj">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UNw-3g-sCj" id="Qi0-tJ-a6c">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EZo-TW-fOL">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -189,6 +189,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="nXF-Mo-Z0a" kind="presentation" identifier="ToEditQuote" id="uxF-pW-Weq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -217,10 +220,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5Gp-96-mNL">
-                                <rect key="frame" x="16" y="111" width="343" height="340"/>
+                                <rect key="frame" x="16" y="111" width="343" height="244"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="340" id="ZG4-X0-2yq"/>
+                                    <constraint firstAttribute="height" constant="244" id="ZG4-X0-2yq"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -233,33 +236,52 @@
                                     <constraint firstAttribute="height" constant="30" id="ryf-AC-hTY"/>
                                 </constraints>
                                 <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="close:" destination="nXF-Mo-Z0a" eventType="touchUpInside" id="Op8-bt-Kod"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0N-Bp-L1R">
-                                <rect key="frame" x="16" y="450" width="113" height="63"/>
+                                <rect key="frame" x="16" y="354" width="113" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="113" id="gD1-tT-EGb"/>
                                     <constraint firstAttribute="height" constant="63" id="pgK-F6-CXZ"/>
                                 </constraints>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="nXF-Mo-Z0a" eventType="touchUpInside" id="Bsc-jR-M2z"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmi-mH-sE2">
-                                <rect key="frame" x="246" y="450" width="113" height="63"/>
+                                <rect key="frame" x="246" y="354" width="113" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="z1n-D3-37R"/>
                                 </constraints>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="nXF-Mo-Z0a" eventType="touchUpInside" id="LGu-XH-8YX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87T-5T-GSi">
-                                <rect key="frame" x="131" y="450" width="113" height="63"/>
+                                <rect key="frame" x="131" y="354" width="113" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="xBq-Zc-IVW"/>
                                 </constraints>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clear:" destination="nXF-Mo-Z0a" eventType="touchUpInside" id="GFn-IQ-iiO"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lqG-s0-JPQ">
+                                <rect key="frame" x="16" y="73" width="228" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fmi-mH-sE2" firstAttribute="height" secondItem="O0N-Bp-L1R" secondAttribute="height" id="776-pX-Dac"/>
+                            <constraint firstItem="lqG-s0-JPQ" firstAttribute="trailing" secondItem="87T-5T-GSi" secondAttribute="trailing" id="Ahi-ki-B5U"/>
                             <constraint firstItem="GV5-CU-8R5" firstAttribute="trailing" secondItem="fmi-mH-sE2" secondAttribute="trailing" constant="16" id="Ar9-o9-sMm"/>
                             <constraint firstItem="87T-5T-GSi" firstAttribute="leading" secondItem="O0N-Bp-L1R" secondAttribute="trailing" constant="2" id="BNl-sS-HwU"/>
                             <constraint firstItem="O0N-Bp-L1R" firstAttribute="leading" secondItem="GV5-CU-8R5" secondAttribute="leading" constant="16" id="DFu-Jq-rY8"/>
@@ -268,7 +290,10 @@
                             <constraint firstItem="fmi-mH-sE2" firstAttribute="width" secondItem="O0N-Bp-L1R" secondAttribute="width" id="MAr-Y1-id9"/>
                             <constraint firstItem="fmi-mH-sE2" firstAttribute="top" secondItem="5Gp-96-mNL" secondAttribute="bottom" constant="-1" id="Qzh-rx-Ouw"/>
                             <constraint firstItem="O0N-Bp-L1R" firstAttribute="top" secondItem="5Gp-96-mNL" secondAttribute="bottom" constant="-1" id="Xnf-bL-PP6"/>
+                            <constraint firstItem="lqG-s0-JPQ" firstAttribute="leading" secondItem="5Gp-96-mNL" secondAttribute="leading" id="azq-v6-BqW"/>
                             <constraint firstItem="ZbA-XP-rFy" firstAttribute="top" secondItem="GV5-CU-8R5" secondAttribute="top" constant="53" id="c3t-lL-eE5"/>
+                            <constraint firstItem="lqG-s0-JPQ" firstAttribute="top" secondItem="ZbA-XP-rFy" secondAttribute="top" id="hfy-rx-uKA"/>
+                            <constraint firstItem="5Gp-96-mNL" firstAttribute="top" secondItem="lqG-s0-JPQ" secondAttribute="bottom" constant="8" symbolic="YES" id="jeN-hW-RTF"/>
                             <constraint firstItem="5Gp-96-mNL" firstAttribute="leading" secondItem="GV5-CU-8R5" secondAttribute="leading" constant="16" id="lE6-Bq-bPd"/>
                             <constraint firstItem="87T-5T-GSi" firstAttribute="height" secondItem="O0N-Bp-L1R" secondAttribute="height" id="ngg-H6-Oo2"/>
                             <constraint firstItem="GV5-CU-8R5" firstAttribute="trailing" secondItem="5Gp-96-mNL" secondAttribute="trailing" constant="16" id="nir-mU-0Rt"/>
@@ -279,6 +304,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GV5-CU-8R5"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="O0N-Bp-L1R" id="sD0-5i-CRp"/>
+                        <outlet property="clearButton" destination="87T-5T-GSi" id="8i6-Be-koR"/>
+                        <outlet property="quoteTextView" destination="5Gp-96-mNL" id="9Oy-P7-lgb"/>
+                        <outlet property="saveButton" destination="fmi-mH-sE2" id="5Ep-8f-H35"/>
+                        <outlet property="titleLabel" destination="lqG-s0-JPQ" id="iQT-Or-etq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAq-YZ-6Jn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -346,6 +378,7 @@
         <image name="placeholder" width="1280" height="1141"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UIU-QY-UOE"/>
+        <segue reference="uxF-pW-Weq"/>
+        <segue reference="5Zd-HU-zei"/>
     </inferredMetricsTieBreakers>
 </document>

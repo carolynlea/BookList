@@ -15,21 +15,24 @@ class QuotesTableViewController: UITableViewController, BookControllerProtocol
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return bookController?.books.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteCell", for: indexPath)
 
-        
+        let book = bookController?.books[indexPath.row]
+        cell.textLabel?.text = book?.quote
 
         return cell
     }
@@ -70,14 +73,25 @@ class QuotesTableViewController: UITableViewController, BookControllerProtocol
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "ToAddQuote"
+        {
+            guard let addQuoteVC = segue.destination as? AddQuoteViewController else {return}
+            addQuoteVC.bookController = bookController
+            
+        }
+        else if segue.identifier == "ToEditQuote"
+        {
+            guard let editQuoteVC = segue.destination as? AddQuoteViewController,
+                let indexPath = tableView.indexPathForSelectedRow else {return}
+            editQuoteVC.bookController = bookController
+            editQuoteVC.book = bookController?.books[indexPath.row]
+        }
     }
-    */
+    
 
 }
