@@ -19,12 +19,6 @@ class BookListTableViewController: UITableViewController, BookControllerProtocol
 
     }
 
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int
@@ -34,7 +28,7 @@ class BookListTableViewController: UITableViewController, BookControllerProtocol
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1
+        return bookController?.books.count ?? 0
     }
 
     
@@ -42,6 +36,9 @@ class BookListTableViewController: UITableViewController, BookControllerProtocol
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookListCell", for: indexPath)
         
+        let book = bookController?.books[indexPath.row]
+        cell.textLabel?.text = book?.title
+        cell.imageView?.image = UIImage(named: (book?.bookCover)!)
 
         return cell
     }
@@ -82,14 +79,21 @@ class BookListTableViewController: UITableViewController, BookControllerProtocol
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "SeeLargImage"
+        {
+            guard let bigImageVC = segue.destination as? LargeImageViewController,
+                let indexPath = tableView.indexPathForSelectedRow else {return}
+            bigImageVC.bookController = bookController
+            bigImageVC.book = bookController?.books[indexPath.row]
+            
+            
+        }
     }
-    */
+    
 
 }

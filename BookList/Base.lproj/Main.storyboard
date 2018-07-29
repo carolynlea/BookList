@@ -136,7 +136,7 @@
             </objects>
             <point key="canvasLocation" x="1765.5999999999999" y="498.80059970014997"/>
         </scene>
-        <!--Large Image View Controller-->
+        <!--Title-->
         <scene sceneID="fIK-Y9-8pP">
             <objects>
                 <viewController id="JUw-ax-39d" customClass="LargeImageViewController" customModule="BookList" customModuleProvider="target" sceneMemberID="viewController">
@@ -145,18 +145,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="AFN-Yg-LTK">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="17" y="64" width="340" height="554"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="AFN-Yg-LTK" firstAttribute="leading" secondItem="8nw-iJ-IeZ" secondAttribute="leading" id="CLv-zS-TSh"/>
+                            <constraint firstItem="AFN-Yg-LTK" firstAttribute="leading" secondItem="8nw-iJ-IeZ" secondAttribute="leading" constant="17" id="CLv-zS-TSh"/>
                             <constraint firstItem="AFN-Yg-LTK" firstAttribute="top" secondItem="8nw-iJ-IeZ" secondAttribute="top" id="kLf-OZ-UtL"/>
-                            <constraint firstItem="AFN-Yg-LTK" firstAttribute="trailing" secondItem="8nw-iJ-IeZ" secondAttribute="trailing" id="n28-Dc-hD0"/>
+                            <constraint firstItem="AFN-Yg-LTK" firstAttribute="trailing" secondItem="8nw-iJ-IeZ" secondAttribute="trailing" constant="-18" id="n28-Dc-hD0"/>
                             <constraint firstItem="AFN-Yg-LTK" firstAttribute="bottom" secondItem="8nw-iJ-IeZ" secondAttribute="bottom" id="yPj-ao-L4L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8nw-iJ-IeZ"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="8zU-Fd-c9e"/>
+                    <connections>
+                        <outlet property="largeImageView" destination="AFN-Yg-LTK" id="m1E-5I-dbV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdR-dx-CcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
